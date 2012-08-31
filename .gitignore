@@ -1,0 +1,4 @@
+*.swp
+virtualenv/
+ipython/
+mpcd/

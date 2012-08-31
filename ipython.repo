@@ -1,0 +1,5 @@
+git://github.com/zeromq/libzmq.git
+git://github.com/cython/cython.git
+git://github.com/zeromq/pyzmq.git
+git://github.com/ipython/ipython.git
+git://github.com/nose-devs/nose.git
