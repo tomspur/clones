@@ -15,7 +15,12 @@ function configure () {
 
 if [ $# -ne 2 ]
 then
-    echo "Usage: `basename $0` clone file"
+    echo "Usage: `basename $0` cmd [file]"
+    echo "    where cmd is one of:"
+    echo "    * clone \$repo_file"
+    echo "        clones all repositories from \$repo_file"
+    echo "    * pull \$folder_with_cloned_repos"
+    echo "        pulls all new changes inside the given folder"
     exit 11
 fi
 
