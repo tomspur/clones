@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright (c) 2012 - Thomas Spura <tomspur@gmail.com>
+# Copyright (c) 2012 - Thomas Spura <thomas.spura@gmail.com>
 
 ##################################################
 # macros for each kind of buildsystem
