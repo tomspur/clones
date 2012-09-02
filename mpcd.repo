@@ -5,3 +5,4 @@ git://github.com/ipython/ipython.git
 git://github.com/nose-devs/nose.git
 git://github.com/numpy/numpy.git
 https://code.google.com/p/mpi4py/
+https://bitbucket.org/yt_analysis/yt
