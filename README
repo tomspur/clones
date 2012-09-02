@@ -1,11 +1,21 @@
 A little script to:
+===================
 * fetch upstream repositories
 * automatically build them
 * automatically install them into a virtualenv
-* The virtualenv folder can be chosen with the $VENV environment variable.
+* The virtualenv folder can be coosen with the $VENV environment variable.
+
+
+Format of .repo file:
+=====================
+The .repo file consists of three collums (ONLY! More collums are not allowed!).
+* $1: SCM type (currently only hg/git supported)
+* $2: name, where the repository will be checked out
+* $3: url of the repository on the web
+
 
 Example workflow
-################
+================
 
 * bootstrap virtualenv:
   `./manage.sh clone virtualenv.repo`
@@ -26,7 +36,7 @@ Example workflow
   `./manage.sh build ipython.repo`
 
   This overhead is solved with running `./manage.sh binstall ipython.repo`
-  instead, which does building and installing in one step.
+  instead, which does builing and installing in one step.
 
 * install dependencies of ipython:
   `./manage.sh install ipython.repo`
