@@ -16,17 +16,28 @@ function configure () {
 
 set -e
 
-if [ $# -ne 2 ]
-then
+function usage {
     echo "Usage: `basename $0` cmd [file]"
     echo "    where cmd is one of:"
+    echo "    * create_env $name"
+    echo "        creates virtualenv \$name at $VENV/\$name"
     echo "    * clone \$repo_file"
     echo "        clones all repositories from \$repo_file"
     echo "    * pull \$folder_with_cloned_repos"
     echo "        pulls all new changes inside the given folder"
-    echo "    * create_env $name"
-    echo "        creates virtualenv \$name at $VENV/\$name"
+    echo "    * build \$repo_file"
+    echo "        builds each repository from \$repo_file"
+    echo "    * install \$repo_file"
+    echo "        installs each repository from \$repo_file into $VENV/\$name"
+    echo "    * build \$repo_file"
+    echo "        builds and installs each repository from \$repo_file directly"
+    echo "        directly in one step into $VENV/\$name"
     exit 11
+}
+
+if [ $# -ne 2 ]
+then
+    usage
 fi
 
 function assert_venv {
@@ -187,5 +198,8 @@ case $1 in
         ;;
     create_env )
         create $2
+        ;;
+    * )
+        usage
         ;;
 esac
