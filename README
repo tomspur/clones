@@ -1,0 +1,4 @@
+A little script to:
+* fetch upstream repositories
+* automatically build them
+* automatically install them into a virtualenv
