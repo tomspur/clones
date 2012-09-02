@@ -84,7 +84,17 @@ function create {
         echo "virtualenv $1 already exists. Aborting..."
         exit 8
     fi
-    ./virtualenv/virtualenv/virtualenv.py --never-download --no-site-packages ~/venv/$1
+    if test -d ./virtualenv/virtualenv/; then
+        ./virtualenv/virtualenv/virtualenv.py \
+            --never-download \
+            --no-site-packages \
+            ~/venv/$1
+    else
+        echo "Did you checkout virtualenv repo?"
+        echo "Are you in the root of clones.git repository?"
+        echo "Aborting..."
+        exit 9
+    fi
 }
 
 ##################################################
