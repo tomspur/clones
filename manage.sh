@@ -34,25 +34,27 @@ function assert_venv {
 }
 
 function clone {
-    echo "Cloning $1 into $2"
-    if ! test -d $2; then
-        mkdir -p $2
+    echo "Cloning $1 repository into $2"
+    if ! test -d $4; then
+        mkdir -p $4
     fi
-    case $1 in
-        git://* )
-            cd $2
-            git clone $1
-            cd ..
-            ;;
-        *bitbucket* )
-            cd $2
-            hg clone $1
-            cd ..
-            ;;
-        * )
-            echo "What kind of repo is $1 ?"
-            ;;
-    esac
+    cd $4
+    if ! test -d $2; then
+        case $1 in
+            git )
+                git clone $3 $2
+                ;;
+            hg )
+                hg clone $3 $2
+                ;;
+            * )
+                echo "What kind of repo is $1 ?"
+                ;;
+        esac
+    else
+        echo "$2 already exists. Skipping..."
+    fi
+    cd ..
 }
 
 function pull {

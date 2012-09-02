@@ -1,2 +1,2 @@
-git://github.com/pypa/virtualenv.git
-https://bitbucket.org/dhellmann/virtualenvwrapper
+git virtualenv git://github.com/pypa/virtualenv.git
+hg virtualenvwrapper https://bitbucket.org/dhellmann/virtualenvwrapper

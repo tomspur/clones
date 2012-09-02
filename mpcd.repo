@@ -1,8 +1,9 @@
-git://github.com/zeromq/libzmq.git
-git://github.com/cython/cython.git
-git://github.com/zeromq/pyzmq.git
-git://github.com/ipython/ipython.git
-git://github.com/nose-devs/nose.git
-git://github.com/numpy/numpy.git
-https://code.google.com/p/mpi4py/
-https://bitbucket.org/yt_analysis/yt
+git zmq git://github.com/zeromq/libzmq.git
+git cython git://github.com/cython/cython.git
+git pyzmq git://github.com/zeromq/pyzmq.git
+git ipython git://github.com/ipython/ipython.git
+git nose git://github.com/nose-devs/nose.git
+git numpy git://github.com/numpy/numpy.git
+hg mpi4py https://code.google.com/p/mpi4py/
+git matplotlib git://github.com/matplotlib/matplotlib.git
+hg yt https://bitbucket.org/yt_analysis/yt
