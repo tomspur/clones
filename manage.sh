@@ -68,15 +68,28 @@ function pull {
 }
 
 function build {
+    venv=$1
+    scm=$2
+    folder=$3
+    url=$4
     assert_venv
-    echo "Building inside of $PWD"
+    cd $3
+    echo "Building $3 inside of $PWD"
     # detect how and search deps
+    cd ..
 }
 
 function install {
+    venv=$1
+    scm=$2
+    folder=$3
+    url=$4
     assert_venv
+    cd $3
     echo "Installing inside of $PWD"
     # detect how, or directly with build?
+    cd ..
+    assert_venv
 }
 
 function create {
@@ -118,20 +131,18 @@ case $1 in
         cd ..
         ;;
     build )
-        cd $2
-            for folder in * ; do
-                cd $folder
-                    build
-                cd ..
+        env=$(echo ${2} | sed 's/.repo//')
+        cd $env
+            cat ../$2 | while read LINE ; do
+                build $env $LINE
             done
         cd ..
         ;;
     install )
-        cd $2
-            for folder in * ; do
-                cd $folder
-                    build
-                cd ..
+        env=$(echo ${2} | sed 's/.repo//')
+        cd $env
+            cat ../$2 | while read LINE ; do
+                install $env $LINE
             done
         cd ..
         ;;
