@@ -187,7 +187,8 @@ case $1 in
         done
         ;;
     pull )
-        cd $2
+        env=$(echo ${2} | sed 's/.repo//')
+        cd $env
             for folder in * ; do
                 cd $folder
                     pull
