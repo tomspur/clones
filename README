@@ -8,7 +8,7 @@ A little script to:
 
 Format of .repo file:
 =====================
-The .repo file consists of three collums (ONLY! More collums are not allowed!).
+The .repo file consists of three columns (ONLY! More columns are not allowed!).
 * $1: SCM type (currently only hg/git supported)
 * $2: name, where the repository will be checked out
 * $3: url of the repository on the web
