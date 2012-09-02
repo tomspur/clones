@@ -2,3 +2,36 @@ A little script to:
 * fetch upstream repositories
 * automatically build them
 * automatically install them into a virtualenv
+
+Example workflow
+################
+
+* bootstrap virtualenv:
+  `./manage.sh clone virtualenv.repo`
+
+* create `ipython` virtualenv in ~/venv/ipython
+  `./manage.sh create_env ipython`
+
+* activate it:
+  `. ~/venv/ipython/bin/activate`
+
+* clone dependencies of ipython:
+  `./manage.sh clone ipython.repo`
+
+* build dependencies of ipython:
+  `./manage.sh build ipython.repo`
+  This currently fails, as you first need to build/install cython with:
+  `cd ipython/cython && python setup.py build` and rerun:
+  `./manage.sh build ipython.repo`
+
+  This overhead is solved with running `./manage.sh binstall ipython.repo`
+  instead, which does builing and installing in one step.
+
+* install dependencies of ipython:
+  `./manage.sh install ipython.repo`
+
+* test correct location of `ipython` command:
+  `which ipython` -> ~/venv/ipython/bin/ipython
+
+* run testsuite of ipython:
+  `iptest`

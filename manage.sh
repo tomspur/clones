@@ -6,12 +6,13 @@
 CFLAGS="-O2 -pipe -march=native -mtune=native"
 # virtualenv.py --no-site-packages --never-download ~/venv/mpcd
 function configure () {
-    echo "RUNNING CONFIGURE FROM BASHRC"
+    echo "RUNNING VIRTUAL_ENV CONFIGURE"
     ./configure $@ --prefix=$VIRTUAL_ENV
 }
 
 ##################################################
 
+set -e
 
 if [ $# -ne 2 ]
 then
@@ -75,7 +76,23 @@ function build {
     assert_venv
     cd $3
     echo "Building $3 inside of $PWD"
-    # detect how and search deps
+    case $(ls setup.py autogen.sh configure 2>/dev/null) in
+        *setup.py* )
+            CFLAGS=$CFLAGS python setup.py build
+            ;;
+        *autogen.sh* )
+            CFLAGS=$CFLAGS ./autogen.sh
+            CFLAGS=$CFLAGS configure
+            make -j$(getconf _NPROCESSORS_ONLN) VERBOSE=1
+            ;;
+        *configure* )
+            CFLAGS=$CFLAGS configure
+            make -j$(getconf _NPROCESSORS_ONLN) VERBOSE=1
+            ;;
+        * )
+            echo "Buildsystem not recognized. Aborting..."
+            exit 9
+    esac
     cd ..
 }
 
@@ -87,7 +104,18 @@ function install {
     assert_venv
     cd $3
     echo "Installing inside of $PWD"
-    # detect how, or directly with build?
+    case $(ls setup.py autogen.sh configure 2>/dev/null) in
+        *setup.py* )
+            python setup.py install
+            ;;
+        *configure* )
+            # includes autogen.sh case from build
+            make install
+            ;;
+        * )
+            echo "Buildsystem not recognized. Aborting..."
+            exit 9
+    esac
     cd ..
     assert_venv
 }
@@ -142,6 +170,15 @@ case $1 in
         env=$(echo ${2} | sed 's/.repo//')
         cd $env
             cat ../$2 | while read LINE ; do
+                install $env $LINE
+            done
+        cd ..
+        ;;
+    binstall )
+        env=$(echo ${2} | sed 's/.repo//')
+        cd $env
+            cat ../$2 | while read LINE ; do
+                build $env $LINE
                 install $env $LINE
             done
         cd ..
