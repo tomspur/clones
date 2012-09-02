@@ -21,6 +21,8 @@ then
     echo "        clones all repositories from \$repo_file"
     echo "    * pull \$folder_with_cloned_repos"
     echo "        pulls all new changes inside the given folder"
+    echo "    * create_env $name"
+    echo "        creates virtualenv \$name at ~/venv/\$name"
     exit 11
 fi
 
@@ -78,6 +80,11 @@ function install {
 function create {
     # creates venv
     # TODO if existent remove first?
+    if test -d ~/venv/$1; then
+        echo "virtualenv $1 already exists. Aborting..."
+        exit 8
+    fi
+    ./virtualenv/virtualenv/virtualenv.py --never-download --no-site-packages ~/venv/$1
 }
 
 ##################################################
@@ -116,7 +123,7 @@ case $1 in
             done
         cd ..
         ;;
-    env )
-        ./virtualenv/virtualenv/virtualenv.py --never-download --no-site-packages ~/venv/$2
+    create_env )
+        create $2
         ;;
 esac
