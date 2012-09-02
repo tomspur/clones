@@ -84,11 +84,17 @@ function pull {
 function build {
     venv=$1
     scm=$2
-    folder=$3
+    pkg=$3
     url=$4
     assert_venv
     cd $3
     echo "Building $3 inside of $PWD"
+    if test -e ../$pkg.BUILD; then
+        echo "Running custom build script from ../$pkg.BUILD"
+        ../$pkg.BUILD
+        cd ..
+        return
+    fi
     case $(ls setup.py autogen.sh configure 2>/dev/null) in
         *setup.py* )
             CFLAGS=$CFLAGS python setup.py build
@@ -117,6 +123,11 @@ function install {
     assert_venv
     cd $3
     echo "Installing inside of $PWD"
+    if test -e ../$pkg.INSTALL; then
+        echo "Running custom build script from ../$pkg.INSTALL"
+        ../$pkg.INSTALL
+        return
+    fi
     case $(ls setup.py autogen.sh configure 2>/dev/null) in
         *setup.py* )
             python setup.py install

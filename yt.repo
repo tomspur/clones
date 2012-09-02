@@ -1,0 +1,8 @@
+hg distribute https://bitbucket.org/tarek/distribute
+git cython git://github.com/cython/cython.git
+git numpy git://github.com/numpy/numpy.git
+git hdf5 git://gitorious.org/hdf5/hdf5-v18.git
+hg h5py https://code.google.com/p/h5py/
+git matplotlib git://github.com/matplotlib/matplotlib.git
+hg mercurial http://selenic.com/hg
+hg yt https://bitbucket.org/yt_analysis/yt

@@ -14,6 +14,14 @@ The .repo file consists of three collums (ONLY! More collums are not allowed!).
 * $3: url of the repository on the web
 
 
+Custom BUILD/INSTALL scripts:
+=============================
+Some repositories don't conform to the usual `python setup.py build` convention
+and need a custom BUILD and or INSTALL script.
+This is now supported with placing a executable $scm.BUILD or $scm.INSTALL
+script into the checked out repository (take yt as an example).
+
+
 Example workflow
 ================
 
