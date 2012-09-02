@@ -5,6 +5,8 @@
 # macros for each kind of buildsystem
 CFLAGS="-O2 -pipe -march=native -mtune=native"
 # virtualenv.py --no-site-packages --never-download ~/venv/mpcd
+# where to install the venv
+VENV=~/venv
 function configure () {
     echo "RUNNING VIRTUAL_ENV CONFIGURE"
     ./configure $@ --prefix=$VIRTUAL_ENV
@@ -23,7 +25,7 @@ then
     echo "    * pull \$folder_with_cloned_repos"
     echo "        pulls all new changes inside the given folder"
     echo "    * create_env $name"
-    echo "        creates virtualenv \$name at ~/venv/\$name"
+    echo "        creates virtualenv \$name at $VENV/\$name"
     exit 11
 fi
 
@@ -123,7 +125,7 @@ function install {
 function create {
     # creates venv
     # TODO if existent remove first?
-    if test -d ~/venv/$1; then
+    if test -d $VENV/$1; then
         echo "virtualenv $1 already exists. Aborting..."
         exit 8
     fi
@@ -131,7 +133,7 @@ function create {
         ./virtualenv/virtualenv/virtualenv.py \
             --never-download \
             --no-site-packages \
-            ~/venv/$1
+            $VENV/$1
     else
         echo "Did you checkout virtualenv repo?"
         echo "Are you in the root of clones.git repository?"

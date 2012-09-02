@@ -2,6 +2,7 @@ A little script to:
 * fetch upstream repositories
 * automatically build them
 * automatically install them into a virtualenv
+* The virtualenv folder can be chosen with the $VENV environment variable.
 
 Example workflow
 ################
@@ -25,7 +26,7 @@ Example workflow
   `./manage.sh build ipython.repo`
 
   This overhead is solved with running `./manage.sh binstall ipython.repo`
-  instead, which does builing and installing in one step.
+  instead, which does building and installing in one step.
 
 * install dependencies of ipython:
   `./manage.sh install ipython.repo`
