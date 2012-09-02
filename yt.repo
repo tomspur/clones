@@ -5,4 +5,8 @@ git hdf5 git://gitorious.org/hdf5/hdf5-v18.git
 hg h5py https://code.google.com/p/h5py/
 git matplotlib git://github.com/matplotlib/matplotlib.git
 hg mercurial http://selenic.com/hg
+git zmq git://github.com/zeromq/libzmq.git
+git pyzmq git://github.com/zeromq/pyzmq.git
+git ipython git://github.com/ipython/ipython.git
+git nose git://github.com/nose-devs/nose.git
 hg yt https://bitbucket.org/yt_analysis/yt
