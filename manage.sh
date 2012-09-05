@@ -100,7 +100,7 @@ function build {
     pkg=$3
     url=$4
     assert_venv
-    cd $3
+    cd $3 || (echo "The package $pkg doesn't seem to be cloned here." && exit 3)
     echo "Building $3 inside of $PWD"
     if test -e ../$pkg.BUILD; then
         echo "Running custom build script from ../$pkg.BUILD"
