@@ -22,7 +22,7 @@ CFLAGS="-O2 -pipe -march=native -mtune=native"
 VENV=~/venv
 function configure () {
     echo "RUNNING VIRTUAL_ENV CONFIGURE"
-    ./configure $@ --prefix=$VIRTUAL_ENV
+    ./configure $@ --prefix=$VIRTUAL_ENV --enable-optimized
 }
 
 ##################################################
