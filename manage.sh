@@ -70,9 +70,13 @@ function clone {
         case $1 in
             git )
                 git clone $3 $2
+                # TODO submodules?
                 ;;
             hg )
                 hg clone $3 $2
+                ;;
+            svn )
+                svn co $3 $2
                 ;;
             * )
                 echo "What kind of repo is $1 ?"
@@ -88,9 +92,13 @@ function pull {
     echo "Pulling inside of $PWD"
     if test -d .git; then
         git pull
+        # TODO submodules?
     fi
     if test -d .hg; then
         hg pull && hg update
+    fi
+    if test -d .svn; then
+        svn update
     fi
 }
 

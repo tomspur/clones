@@ -1,0 +1,10 @@
+git zmq git://github.com/zeromq/libzmq.git
+git cython git://github.com/cython/cython.git
+git pyzmq git://github.com/zeromq/pyzmq.git
+git ipython git://github.com/ipython/ipython.git
+git nose git://github.com/nose-devs/nose.git
+git numpy git://github.com/numpy/numpy.git
+svn llvm http://llvm.org/svn/llvm-project/llvm/trunk
+git llvmpy git://github.com/llvmpy/llvmpy.git
+git Meta https://github.com/numba/Meta.git
+git numba git://github.com/numba/numba.git
